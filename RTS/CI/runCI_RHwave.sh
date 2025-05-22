@@ -13,5 +13,6 @@ export SCRATCHDIR="/home/${USER}/SHiELD_dev/SCRATCH/soloCI_amdbox_${RELEASE}/"
 mkdir -p ${BUILDDIR}/RTS/CI/stdout
 
 SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
-./C96.sw.RHwave.init3_64
-./C96.sw.RHwave.init3_32
+#./C96.sw.RHwave.init3_64
+#./C96.sw.RHwave.init3_32
+./C96.sw.RHwave.init3_64_step1
