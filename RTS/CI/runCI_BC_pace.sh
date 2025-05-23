@@ -14,3 +14,8 @@ mkdir -p ${BUILDDIR}/RTS/CI/stdout
 
 SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
 ./C96.solo.BCmoist.pace_64
+./C96.solo.BCmoist.pace_32
+
+
+# Existing BC moist, non-hydrostatic, sanity check
+#./C96.solo.BCmoist
