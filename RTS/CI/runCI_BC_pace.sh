@@ -16,9 +16,16 @@ timestamp=$(date "+%Y%m%d_%H%M%S")
 echo "Script started at: $timestamp"
 
 SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
+
+# Cleanup
+rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C96.solo.BCmoist*
+
 # Test Case 13
 ./C96.solo.BCmoist.pace_64 2>&1 | tee log.C96.solo.BCmoist.pace_64.${timestamp}.txt
 ./C96.solo.BCmoist.pace_32 2>&1 | tee log.C96.solo.BCmoist.pace_32.${timestamp}.txt
+
+#./C96.solo.BCmoist.pace_32_ok 2>&1 | tee log.C96.solo.BCmoist.pace_32_ok.${timestamp}.txt
+#./C96.solo.BCmoist.pace_32_ng 2>&1 | tee log.C96.solo.BCmoist.pace_32_ng.${timestamp}.txt
 
 # Test Case 12
 ./C96.solo.BCmoist.pace_12_64 2>&1 | tee log.C96.solo.BCmoist.pace_12_64.${timestamp}.txt
@@ -26,4 +33,5 @@ SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout
 
 
 # Existing BC moist, non-hydrostatic, sanity check
-./C96.solo.BCmoist 2>&1 | tee log.C96.solo.BCmoist.${timestamp}.txt
+#./C96.solo.BCmoist 2>&1 | tee log.C96.solo.BCmoist.${timestamp}.txt
+#./C96.solo.BCmoist_32 2>&1 | tee log.C96.solo.BCmoist_32.${timestamp}.txt
