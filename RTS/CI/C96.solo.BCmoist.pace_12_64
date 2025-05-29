@@ -70,8 +70,8 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
 
 # changeable parameters
     # dycore definitions
-    npx="13"
-    npy="13"
+    npx="49"
+    npy="49"
     npz="79"
     layout_x="1"
     layout_y="1"

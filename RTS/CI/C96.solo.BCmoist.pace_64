@@ -70,8 +70,8 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
 
 # changeable parameters
     # dycore definitions
-    npx="13"
-    npy="13"
+    npx="49"
+    npy="49"
     npz="79"
     layout_x="1"
     layout_y="1"
@@ -101,7 +101,8 @@ if [ ${TYPE}="nh" ]; then
   hydrostatic=".F."
   phys_hydrostatic=".F."     # can be tested
   use_hydro_pressure=".F."   # can be tested
-  consv_te="1."
+  #consv_te="1."
+  consv_te="0." # Setting to match Pace ground truth [JK]
 else
   # hydrostatic options
   make_nh=".F."
