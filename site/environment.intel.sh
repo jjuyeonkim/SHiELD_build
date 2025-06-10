@@ -188,8 +188,8 @@ case $hostname in
       module load oneapi/2024.2
       module load compiler/2024.2.0
       module load mpi/2021.13
-      module load netcdf/4.9.2
-      module load hdf5/1.14.5
+      module load netcdf/4.9.3
+      module load hdf5/1.14.6
       module load cmake/3.30.0
       module load libyaml/0.2.5
 
