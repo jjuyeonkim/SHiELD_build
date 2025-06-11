@@ -90,7 +90,7 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
     mountain=".F."
     external_ic=".F."
     warm_start=".F."
-    na_init=1
+    na_init=0
     curr_date="0,0,0,0"
     #fms yaml
     use_yaml=".F." #if True, requires data_table.yaml and field_table.yaml
