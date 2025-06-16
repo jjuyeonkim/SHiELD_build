@@ -72,7 +72,7 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
     # dycore definitions
     npx="49"
     npy="49"
-    npz="79"
+    npz="32"
     layout_x="1"
     layout_y="1"
     io_layout="1,1" #Want to increase this in a production run??
