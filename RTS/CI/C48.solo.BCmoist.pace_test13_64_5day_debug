@@ -101,8 +101,8 @@ if [ ${TYPE}="nh" ]; then
   hydrostatic=".F."
   phys_hydrostatic=".F."     # can be tested
   use_hydro_pressure=".F."   # can be tested
-  #consv_te="1."
-  consv_te="0." # Setting to match Pace ground truth [JK]
+  # Setting to match Pace ground truth [JK]
+  consv_te="0."
 else
   # hydrostatic options
   make_nh=".F."
@@ -396,8 +396,8 @@ cat > input.nml <<EOF
        beta = 0.
        a_imp = 1.
        p_fac = 0.05
-       k_split = 1
-       n_split = 1
+       k_split = 2
+       n_split = 8
        nwat = 6
        na_init = $na_init
        d_ext = 0.0
