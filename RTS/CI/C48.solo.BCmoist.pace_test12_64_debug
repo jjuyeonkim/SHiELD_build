@@ -73,8 +73,8 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
     npx="49"
     npy="49"
     npz="32"
-    layout_x="1"
-    layout_y="1"
+    layout_x="4"
+    layout_y="4"
     io_layout="1,1" #Want to increase this in a production run??
     nthreads="2"
 

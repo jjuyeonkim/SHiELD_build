@@ -38,13 +38,13 @@ SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout
 # Debug
 #rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C96.solo.BCmoist.pace_test1*_debug
 
-./C48.solo.BCmoist.pace_test13_64_debug | tee log.C48.solo.BCmoist..pace_test13_64_debug.${timestamp}.txt
-#./C48.solo.BCmoist.pace_test13_32_debug | tee log.C48.solo.BCmoist..pace_test13_32_debug.${timestamp}.txt
-#./C48.solo.BCmoist.pace_test12_64_debug | tee log.C48.solo.BCmoist..pace_test12_64_debug.${timestamp}.txt
-#./C48.solo.BCmoist.pace_test12_32_debug | tee log.C48.solo.BCmoist..pace_test12_32_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test13_64_debug | tee log.C48.solo.BCmoist.pace_test13_64_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test13_32_debug | tee log.C48.solo.BCmoist.pace_test13_32_debug.${timestamp}.txt
+./C48.solo.BCmoist.pace_test12_64_debug | tee log.C48.solo.BCmoist.pace_test12_64_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test12_32_debug | tee log.C48.solo.BCmoist.pace_test12_32_debug.${timestamp}.txt
 
 #rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C96.solo.BCmoist.pace_*5day_debug
-#./C48.solo.BCmoist.pace_test12_64_5day_debug | tee log.C48.solo.BCmoist.pace_test12_64_5day_debug.${timestamp}.txt
+./C48.solo.BCmoist.pace_test12_64_5day_debug | tee log.C48.solo.BCmoist.pace_test12_64_5day_debug.${timestamp}.txt
 
 #ls ${SCRATCHDIR}/CI/BATCH-CI/C48.solo.BCmoist.pace_test13_64_5day_debug
-./C48.solo.BCmoist.pace_test13_64_5day_debug | tee log.C48.solo.BCmoist.pace_test13_64_5day_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test13_64_5day_debug | tee log.C48.solo.BCmoist.pace_test13_64_5day_debug.${timestamp}.txt
