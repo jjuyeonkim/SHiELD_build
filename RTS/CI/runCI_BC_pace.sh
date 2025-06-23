@@ -24,15 +24,13 @@ SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout
 #./C96.solo.BCmoist.pace_64 2>&1 | tee log.C96.solo.BCmoist.pace_64.${timestamp}.txt
 #./C96.solo.BCmoist.pace_32 2>&1 | tee log.C96.solo.BCmoist.pace_32.${timestamp}.txt
 
-#./C96.solo.BCmoist.pace_32_ok 2>&1 | tee log.C96.solo.BCmoist.pace_32_ok.${timestamp}.txt
-#./C96.solo.BCmoist.pace_32_ng 2>&1 | tee log.C96.solo.BCmoist.pace_32_ng.${timestamp}.txt
-
 # Test Case 12
 #./C96.solo.BCmoist.pace_12_64 2>&1 | tee log.C96.solo.BCmoist.pace_12_64.${timestamp}.txt
 #./C96.solo.BCmoist.pace_12_32 2>&1 | tee log.C96.solo.BCmoist.pace_12_32.${timestamp}.txt
 
 
 # Existing BC moist, non-hydrostatic, sanity check
+#rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C96.solo.BCmoist
 #./C96.solo.BCmoist 2>&1 | tee log.C96.solo.BCmoist.${timestamp}.txt
 #./C96.solo.BCmoist_32 2>&1 | tee log.C96.solo.BCmoist_32.${timestamp}.txt
 
@@ -40,11 +38,13 @@ SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout
 # Debug
 #rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C96.solo.BCmoist.pace_test1*_debug
 
-#./C48.solo.BCmoist.pace_test13_64_debug | tee log.C48.solo.BCmoist..pace_test13_64_debug.${timestamp}.txt
+./C48.solo.BCmoist.pace_test13_64_debug | tee log.C48.solo.BCmoist..pace_test13_64_debug.${timestamp}.txt
 #./C48.solo.BCmoist.pace_test13_32_debug | tee log.C48.solo.BCmoist..pace_test13_32_debug.${timestamp}.txt
 #./C48.solo.BCmoist.pace_test12_64_debug | tee log.C48.solo.BCmoist..pace_test12_64_debug.${timestamp}.txt
 #./C48.solo.BCmoist.pace_test12_32_debug | tee log.C48.solo.BCmoist..pace_test12_32_debug.${timestamp}.txt
 
+#rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C96.solo.BCmoist.pace_*5day_debug
+#./C48.solo.BCmoist.pace_test12_64_5day_debug | tee log.C48.solo.BCmoist.pace_test12_64_5day_debug.${timestamp}.txt
 
-./C48.solo.BCmoist.pace_test12_64_5day_debug | tee log.C48.solo.BCmoist.pace_test12_64_5day_debug.${timestamp}.txt
+#ls ${SCRATCHDIR}/CI/BATCH-CI/C48.solo.BCmoist.pace_test13_64_5day_debug
 ./C48.solo.BCmoist.pace_test13_64_5day_debug | tee log.C48.solo.BCmoist.pace_test13_64_5day_debug.${timestamp}.txt
