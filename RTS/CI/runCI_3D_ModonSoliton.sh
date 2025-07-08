@@ -15,8 +15,12 @@ mkdir -p ${BUILDDIR}/RTS/CI/stdout
 timestamp=$(date "+%Y%m%d_%H%M%S")
 echo "Script started at: $timestamp"
 
-SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
+# SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
 
-test_name=C128.solo.3dmodon_64_debug
-./${test_name} | tee log.${test_name}.${timestamp}.txt
+test_list=(C128.solo.3dmodon_64_debug, C128.solo.3dmodon_test45_64_1_day_debug)
+#test_list=(C128.solo.3dmodon_test45_64_1_day_debug)
 
+for test_name in "${test_list[@]}"; do
+  echo "Processing: ${test_name}"
+  ./${test_name} | tee log.${test_name}.${timestamp}.txt
+done

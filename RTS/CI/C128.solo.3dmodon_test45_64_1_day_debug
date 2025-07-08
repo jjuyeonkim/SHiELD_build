@@ -55,7 +55,7 @@ export OMP_STACKSIZE=256m
 
 # case specific details
 res=128
-MEMO="solo.3dmodon_64_debug"
+MEMO="solo.3dmodon_test45_64_1_day_debug"
 TYPE="nh"         # choices:  nh, hydro
 MODE="64bit"      # choices:  32bit, 64bit
 GRID="C$res"
@@ -79,7 +79,7 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
     nthreads="2"
 
     # run length
-    days="0"
+    days="1"
     hours="0"
     minutes="0"
     seconds="0"
@@ -312,13 +312,15 @@ cat > input.nml <<EOF
     max_axes = 240
     !do_diag_field_log = .T.
 /
-
+ ! fms_affinity_nml doesn't exist in Joseph's but seems needed.
  &fms_affinity_nml
     affinity = .false.
 /
 
  &fms_io_nml
        checksum_required   = .false.
+       max_files_r = 100,
+       max_files_w = 100,
 /
 
  &fms_nml
@@ -329,65 +331,75 @@ cat > input.nml <<EOF
 
  &fv_core_nml
        layout   = $layout_x,$layout_y
-       io_layout = $io_layout
+       mountain = .F. ! .false.
+       !io_layout = $io_layout
        npx      = $npx
        npy      = $npy
        ntiles   = 6
        npz    = $npz
        ! npz_type = 'gfs'
        grid_type = 0
-       make_nh = $make_nh
-       fv_debug = .F.
-       range_warn = .F.
        reset_eta = .F.
-       sg_cutoff = -1 !replaces old "n_sponge"
-       fv_sg_adj = 3600
-       nudge_qv = .T.
-       RF_fast = .T.
-       tau_h2o = 0.
-       tau = 10.
-       rf_cutoff = 3000.
-       d2_bg_k1 = 0.0
-       d2_bg_k2 = 0.00
-       kord_tm = -9
-       kord_mt = 9
-       kord_wz = 9
-       kord_tr = 9
-       hydrostatic = $hydrostatic
-       phys_hydrostatic = $phys_hydrostatic
-       use_hydro_pressure = $use_hydro_pressure
-       beta = 0.
-       a_imp = 1.
-       p_fac = 0.05
+       make_nh = $make_nh ! not in joseph's
        k_split = 2
        n_split = 8
-       nwat = 6
-       na_init = $na_init
-       d_ext = 0.0
-       dnats = 1
-       d2_bg = 0.0
-       nord = 2
-       dddmp = 0.5
+       nwat = 6 ! 0 in joseph's
+       fill = .F. ! .false. in joseph's what's the diff?
+       sg_cutoff = -1 !replaces old "n_sponge" in joseph's
+       d2_bg_k1 = 0.0
+       d2_bg_k2 = 0.00
        d4_bg = 0.08
+       d2_bg = 0.0
+       d_ext = 0.0
+       nord = 2
+       d_con = 0. ! exists in Joseph's
        do_vort_damp = .F.
-       external_ic = .F. !COLD START
-       is_ideal_case = .T.
-       mountain = .F. ! .false.
+       vtdm4 = 0.00 ! exists in Joseph's
+       consv_te = 0.
        hord_mt = 8
        hord_vt = 8
        hord_tm = 8
        hord_dp = 8
        hord_tr = 8
-       adjust_dry_mass = .F.
-       consv_te = 0.
-       consv_am = .T.
-       fill = .F. ! .false.
-       dwind_2d = .F.
+       kord_tm = -9
+       kord_mt = 9
+       kord_wz = 9
+       kord_tr = 9
+       adiabatic = .T. ! .true. n Joseph's
+
        print_freq = 24
-       warm_start = $warm_start
-       z_tracer = .T.
-       fill_dp = .T.
-       adiabatic = .T. ! .true.
+       warm_start = $warm_start ! .false. in Joseph's
+
+       fv_debug = .F.
+       check_negative = .F. ! exists in Joseph's
+       hydrostatic = $hydrostatic ! .T. in Joseph's
+       do_schmidt = .T. ! exists in Joseph's
+       target_lon = 0 ! exists in Joseph's
+       is_ideal_case = .T.
+
+       ! Below are commented out; DNE in Joseph's
+       ! ------------------------------------
+       ! range_warn = .F.
+       ! fv_sg_adj = 3600
+       ! nudge_qv = .T.
+       ! RF_fast = .T.
+       ! tau_h2o = 0.
+       ! tau = 10.
+       ! rf_cutoff = 3000.
+       ! phys_hydrostatic = $phys_hydrostatic
+       ! use_hydro_pressure = $use_hydro_pressure
+       ! beta = 0.
+       ! a_imp = 1.
+       ! p_fac = 0.05
+       ! na_init = $na_init
+       ! dnats = 1
+       ! dddmp = 0.5
+       ! external_ic = .F. !COLD START
+       ! adjust_dry_mass = .F.
+       ! consv_am = .T.
+       ! dwind_2d = .F.
+       ! z_tracer = .T.
+       ! fill_dp = .T.
 /
 
 ! &integ_phys_nml
