@@ -1,4 +1,9 @@
 #!/bin/sh
+
+# 
+# NOTE: This doesn't work! I'm just keeping it for now.
+#
+
 #***********************************************************************
 #*                   GNU Lesser General Public License
 #*
@@ -73,16 +78,16 @@ executable=${BUILDDIR}/Build/bin/SOLO_${TYPE}.${COMP}.${MODE}.${COMPILER}.x
     npx="129"
     npy="129"
     npz="5"
-    layout_x="2" # joseph: "12"
-    layout_y="2" # joseph: "12"
+    layout_x="1" # joseph: "12"
+    layout_y="1" # joseph: "12"
     io_layout="1,1" #Want to increase this in a production run??
     nthreads="2"
 
     # run length
-    days="1"
+    days="0"
     hours="0"
     minutes="0"
-    seconds="0"
+    seconds="2400"
     dt_atmos="1200"
 
     # set variables in input.nml for initial run
@@ -343,7 +348,7 @@ cat > input.nml <<EOF
        make_nh = $make_nh ! not in joseph's
        k_split = 2
        n_split = 8
-       nwat = 6 ! 0 in joseph's
+       nwat = 0 ! 0 in joseph's (num water species)
        fill = .F. ! .false. in joseph's what's the diff?
        sg_cutoff = -1 !replaces old "n_sponge" in joseph's
        d2_bg_k1 = 0.0

@@ -80,6 +80,35 @@ switch ($hostname)
       echo -e ' '
       module list
       breaksw
+   case lsc*:
+      echo " lsc environment "
+
+#      source $MODULESHOME/init/sh
+      module load oneapi/2024.2
+      module load compiler/2024.2.0
+      module load mpi/2021.13
+      module load netcdf/4.9.3
+      module load hdf5/1.14.6
+      module load cmake/3.30.0
+      module load libyaml/0.2.5
+
+      setenv CPATH "${NETCDF_ROOT}/include:${CPATH}"
+      setenv NETCDF_DIR ${NETCDF_ROOT}
+      setenv FMS_CPPDEFS ""
+
+      # make your compiler selections here
+      setenv FC mpiifort
+      setenv CC mpiicx
+      setenv CXX mpicpc
+      setenv LD mpiifort
+      setenv TEMPLATE site/intel.mk
+      setenv LAUNCHER "mpirun -prepend-rank"
+
+      # highest level of AVX support
+      setenv AVX_LEVEL -march=core-avx2
+      echo -e ' '
+      module list
+      breaksw
    default:
       echo " no environment available based on the hostname "
       breaksw

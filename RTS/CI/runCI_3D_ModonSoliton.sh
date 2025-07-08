@@ -17,10 +17,18 @@ echo "Script started at: $timestamp"
 
 # SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
 
-test_list=(C128.solo.3dmodon_64_debug, C128.solo.3dmodon_test45_64_1_day_debug)
+# NOTE: These tests don't really work.... I'll keep it just to have it in case I ever try to debug in the future.
+#test_list=(C128.solo.3dmodon_64_debug, C128.solo.3dmodon_test45_64_1_day_debug)
 #test_list=(C128.solo.3dmodon_test45_64_1_day_debug)
 
-for test_name in "${test_list[@]}"; do
-  echo "Processing: ${test_name}"
-  ./${test_name} | tee log.${test_name}.${timestamp}.txt
-done
+#for test_name in "${test_list[@]}"; do
+#  echo "Processing: ${test_name}"
+#  ./${test_name} | tee log.${test_name}.${timestamp}.txt
+#done
+
+
+
+
+
+# Test modified directly from Joseph's test with Rusty (run with prod)
+./C128.solo.modon
