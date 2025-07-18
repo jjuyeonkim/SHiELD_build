@@ -8,6 +8,9 @@
 
 set echo
 
+# JKNOTE: Setting SLURM_JOB_NAME just to get through the script
+set SLURM_JOB_NAME = ""
+
 set SCRATCHROOT = "/home/${USER}/SHiELD_dev/SCRATCH/soloCI_amdbox_FV3-202411-public/CI/BATCH-CI/"
 set BUILD_AREA = "/home/${USER}/SHiELD_dev/SHiELD_build"
 
