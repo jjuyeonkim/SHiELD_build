@@ -31,4 +31,5 @@ echo "Script started at: $timestamp"
 
 
 # Test modified directly from Joseph's test with Rusty (run with prod)
-./C128.solo.modon
+#./C128.solo.modon
+./C128.solo.modon_zeroday
