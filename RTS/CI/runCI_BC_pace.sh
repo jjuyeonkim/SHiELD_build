@@ -49,5 +49,7 @@ SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout
 #rm -rf ${SCRATCHDIR}/CI/BATCH-CI/C48.solo.BCmoist.pace_test13_64_5day_debug
 #./C48.solo.BCmoist.pace_test13_64_5day_debug | tee log.C48.solo.BCmoist.pace_test13_64_5day_debug.${timestamp}.txt
 
-./C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug.${timestamp}.txt
 
+#./C48.solo.BCmoist.pace_test12_64_0day_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_0day_dycoreonly_debug.${timestamp}.txt
+./C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug.${timestamp}.txt
