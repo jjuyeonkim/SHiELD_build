@@ -102,11 +102,11 @@ fi
 # optionally link serialbox modules for data serialization
 SERIAL_I_FLAGS=""
 SERIAL_L_FLAGS=""
-#SERIALBOX_ROOT=/ncrc/home1/Janice.Kim/work/20260129_translate_tests/serialbox2/install
-#if [ ${SERIAL} = 'serial' ] ; then
-#  SERIAL_I_FLAGS+="-I${SERIALBOX_ROOT}/include"
-#  SERIAL_L_FLAGS+="-L${SERIALBOX_ROOT}/lib -lSerialboxFortran -lSerialboxC -lSerialboxCore"
-#fi
+SERIALBOX_ROOT=/ncrc/home1/Janice.Kim/work/20260129_translate_tests/serialbox2/install
+if [ ${SERIAL} = 'serial' ] ; then
+  SERIAL_I_FLAGS+="-I${SERIALBOX_ROOT}/include"
+  SERIAL_L_FLAGS+="-L${SERIALBOX_ROOT}/lib -lSerialboxFortran -lSerialboxC -lSerialboxCore"
+fi
 
 pushd exec/${CONFIG}_${HYDRO}.${COMP}.${BIT}.${COMPILER}/
 
