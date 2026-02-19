@@ -80,16 +80,16 @@ echo ' '
 
 release="main"
 
-fv3_release=$release
+fv3_jjk_release="20260219_serialbox"
 phy_release=$release
 fms_release="2025.04"
 fms_c_release="2025.04"
-drivers_release=$release
+drivers_jjk_release="20260219_serialbox"
 land_release="2025.04"
 
-git clone -b ${fv3_release} https://github.com/NOAA-GFDL/GFDL_atmos_cubed_sphere
+git clone -b ${fv3_jjk_release} https://github.com/jjuyeonkim/GFDL_atmos_cubed_sphere
 git clone -b ${fms_release}   https://github.com/NOAA-GFDL/FMS
-git clone -b ${drivers_release}   https://github.com/NOAA-GFDL/atmos_drivers
+git clone -b ${drivers_jjk_release}   https://github.com/jjuyeonkim/atmos_drivers
 
 if [ $config_name = 'SHiELD' ] || [ $config_name = 'SHiEMOM' ] || [ $config_name = 'SHiEMOM_LM4' ] ; then
    git clone -b ${phy_release} https://github.com/NOAA-GFDL/SHiELD_physics
