@@ -55,6 +55,7 @@ spin()
   avx="Y"
   compiler="intel"
   clean="noclean"
+  serial="noserial"
   pic="nopic"
 
   config_name="SHiELD"
@@ -111,6 +112,10 @@ spin()
              clean="${arg#*=}"
              shift # Remove "clean" from processing
              ;;
+          noserial|serial)
+             serial="${arg#*=}"
+             shift # Remove "serial" from processing
+             ;;
           nopic|pic)
              pic="${arg#*=}"
              shift # Remove "pic" from processing
@@ -128,6 +133,7 @@ spin()
           echo -e "\t[avx(D) | noavx] \t\t\t use AVX_LEVEL defined in site/environment.<compiler>.sh"
           echo -e "\t[intel(D) | gnu | nvhpc] \t\t\t compiler"
           echo -e "\t[noclean(D) | clean | cleanall] \t cleans exec area"
+          echo -e "\t[noserial(D) | serial] \t\t\t seialbox support"
           echo -e "\t[nopic(D) | pic] \t whether to build all components with the -fPIC flag (position independent code)"
           echo -e "\n"
           exit
@@ -157,6 +163,10 @@ export BUILD_ROOT=${PWD%/*}
 export SHiELD_SRC=${PWD%/*/*}/SHiELD_SRC/
 export PATH="${BUILD_ROOT}/mkmf/bin:${BUILD_ROOT}/Build/mk_scripts:${PATH}"
 export LIBS_DIR=${BUILD_ROOT}/Build
+export SERIALBOX_ROOT=/ncrc/home1/Janice.Kim/work/20260129_translate_tests/serialbox2/install
+export PP_SER=${SERIALBOX_ROOT}/python/pp_ser/pp_ser.py
+export PPSER_FLAGS="--verbose --ignore-identical -m utils_ppser_kbuff"
+export SERIALBOX_OUTDIR=${PWD%/*/*}/SERIALBOX_BUILD
 
 #
 # load the proper environment for your machine
@@ -173,6 +183,7 @@ echo -e "\tbit      = $bit"
 echo -e "\tavx      = $avx"
 echo -e "\tcompiler = $compiler"
 echo -e "\tclean    = $clean"
+echo -e "\tserial   = $serial"
 echo -e "\tpic      = $pic"
 echo -e "\n"
 sleep 5
@@ -300,7 +311,51 @@ fi
   mkdir -p ./bin/
 
 # build the model
-echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} \t `date`"
+echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} ${serial} \t `date`"
+  #
+  # optionally run serialbox preprocessor
+  if [ $serial = "serial" ] ; then
+    echo -e ">>> preprocessing code for serialization"
+    # make directories for serialbox-preprocessed code
+    # Currently only doing physics, but we can add more as necessary
+    #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/GFS_layer/
+    #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/simple_coupler/
+    #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/gsmphys/
+    #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/IPD_layer/
+    #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/FV3GFS/
+    mkdir -p $SERIALBOX_OUTDIR/atmos_driver/solo
+    #mkdir -p $SERIALBOX_OUTDIR/FMSCoupler/SHiELD/
+    #mkdir -p $SERIALBOX_OUTDIR/FMSCoupler/simple/
+    #mkdir -p $SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/driver/SHiELD/
+    mkdir -p $SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/model/
+    
+    # run preprocessor
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/GFS_layer/ $SHiELD_SRC/SHiELD_physics/GFS_layer/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/gsmphys/ $SHiELD_SRC/SHiELD_physics/gsmphys/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/gsmphys/ $SHiELD_SRC/SHiELD_physics/gsmphys/*.F
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/simple_coupler/ $SHiELD_SRC/SHiELD_physics/simple_coupler/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/IPD_layer/ $SHiELD_SRC/SHiELD_physics/IPD_layer/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/FV3GFS/ $SHiELD_SRC/SHiELD_physics/FV3GFS/*.F90
+    python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/atmos_driver/solo/ $SHiELD_SRC/atmos_driver/solo/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/FMSCoupler/SHiELD/ $SHiELD_SRC/FMSCoupler/SHiELD/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/FMSCoupler/simple/ $SHiELD_SRC/FMSCoupler/simple/*.F90
+    #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/driver/SHiELD/ $SHiELD_SRC/GFDL_atmos_cubed_sphere/driver/SHiELD/*.F90
+    python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/model/ $SHiELD_SRC/GFDL_atmos_cubed_sphere/model/*.F90
+    
+    # copy back to src location to preserve rest of build system
+    #cp $SERIALBOX_OUTDIR/SHiELD_physics/GFS_layer/* $SHiELD_SRC/SHiELD_physics/GFS_layer/
+    #cp $SERIALBOX_OUTDIR/SHiELD_physics/gsmphys/* $SHiELD_SRC/SHiELD_physics/gsmphys/
+    #cp $SERIALBOX_OUTDIR/SHiELD_physics/simple_coupler/* $SHiELD_SRC/SHiELD_physics/simple_coupler/
+    #cp $SERIALBOX_OUTDIR/SHiELD_physics/IPD_layer/* $SHiELD_SRC/SHiELD_physics/IPD_layer/
+    #cp $SERIALBOX_OUTDIR/SHiELD_physics/FV3GFS/* $SHiELD_SRC/SHiELD_physics/FV3GFS/
+    cp $SERIALBOX_OUTDIR/atmos_driver/solo/* $SHiELD_SRC/atmos_driver/solo/
+    #cp $SERIALBOX_OUTDIR/FMSCoupler/SHiELD/* $SHiELD_SRC/FMSCoupler/SHiELD/
+    #cp $SERIALBOX_OUTDIR/FMSCoupler/simple/* $SHiELD_SRC/FMSCoupler/simple/
+    #cp $SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/driver/SHiELD/* $SHiELD_SRC/GFDL_atmos_cubed_sphere/driver/SHiELD/
+    cp $SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/model/* $SHiELD_SRC/GFDL_atmos_cubed_sphere/model/
+    echo -e "Finished preprocessing for serialization"
+
+  fi
   #
   # create the file list for the build
     mk_paths ${config} ${hydro} ${comp} ${bit} ${compiler}       > build_${config}_${hydro}.${comp}.${bit}.${compiler}.out 2>&1
@@ -310,7 +365,7 @@ echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} \t `date`"
     fi
   #
   # create the library makefiles
-    mk_makefile ${config} ${hydro} ${comp} ${bit} ${compiler}    >> build_${config}_${hydro}.${comp}.${bit}.${compiler}.out 2>&1
+    mk_makefile ${config} ${hydro} ${comp} ${bit} ${compiler} ${serial}    >> build_${config}_${hydro}.${comp}.${bit}.${compiler}.out 2>&1
     if [ $? -ne 0 ] ; then
        echo ">>> makefile creation failed"
        exit 5
@@ -325,10 +380,10 @@ echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} \t `date`"
 #
 # test and report on build success
   if [ $? -ne 0 ] ; then
-     echo ">>> ${config_name} build ${hydro} ${comp} ${bit} ${compiler} failed"
+     echo ">>> ${config_name} build ${hydro} ${comp} ${bit} ${compiler} ${serial} failed"
      exit 6
   else
-     echo " ${config_name} build ${hydro} ${comp} ${bit} ${compiler} successful"
+     echo " ${config_name} build ${hydro} ${comp} ${bit} ${compiler} ${serial} successful"
   fi
 
 exit 0
