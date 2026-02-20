@@ -30,6 +30,7 @@ MAKEFLAGS += --jobs=8
 
 NETCDF_ROOT = $(NETCDF_DIR)
 MPI_ROOT    = $(MPICH_DIR)
+SERIALBOX_ROOT = /ncrc/home1/Janice.Kim/work/20260129_translate_tests/serialbox2/install
 # start with blank LIB
 LIBS :=
 
@@ -40,6 +41,10 @@ else
   INCLUDE = -I$(NETCDF_ROOT)/include
   LIBS += -lnetcdff -lnetcdf -lhdf5_hl -lhdf5 -lz
 endif
+
+LIBS += -lSerialboxFortran -lSerialboxC -lSerialboxCore -lpthread -lstdc++ -lstdc++fs
+INCLUDE += -I$(SERIALBOX_ROOT)/include
+
 INCLUDE += $(shell pkg-config --cflags yaml-0.1)
 FPPFLAGS := -fpp -Wp,-w $(INCLUDE)
 CPPFLAGS := $(shell pkg-config --cflags yaml-0.1)
@@ -77,7 +82,7 @@ TRANSCENDENTALS := -fast-transcendentals
 FFLAGS_OPENMP = -qopenmp
 FFLAGS_VERBOSE = -v -V -what
 
-CFLAGS := -D__IFC -sox -msse2
+CFLAGS := -D__IFC -sox -msse2 -fp-model source
 ifeq ($(AVX2),Y)
 #CFLAGS += -xHOST -xCORE-AVX2 -qno-opt-dynamic-align
 endif

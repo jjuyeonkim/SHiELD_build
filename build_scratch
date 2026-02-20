@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+set -x
+
+rm -rf ../SHiELD_SRC/*
+rm -rf ../SERIALBOX_BUILD/*
+./CHECKOUT_code
+
+cd Build
+rm build_shield_nh.debug.64bit.gnu.out
+#./COMPILE clean shield nh debug 64bit gnu serial
+./COMPILE cleanall solo nh debug 64bit gnu serial
+
+cd ..
+set +x
