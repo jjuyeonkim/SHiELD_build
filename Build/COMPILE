@@ -323,7 +323,7 @@ echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} ${serial} \t `
     #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/gsmphys/
     #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/IPD_layer/
     #mkdir -p $SERIALBOX_OUTDIR/SHiELD_physics/FV3GFS/
-    mkdir -p $SERIALBOX_OUTDIR/atmos_driver/solo
+    mkdir -p $SERIALBOX_OUTDIR/atmos_drivers/solo/
     #mkdir -p $SERIALBOX_OUTDIR/FMSCoupler/SHiELD/
     #mkdir -p $SERIALBOX_OUTDIR/FMSCoupler/simple/
     #mkdir -p $SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/driver/SHiELD/
@@ -336,7 +336,7 @@ echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} ${serial} \t `
     #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/simple_coupler/ $SHiELD_SRC/SHiELD_physics/simple_coupler/*.F90
     #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/IPD_layer/ $SHiELD_SRC/SHiELD_physics/IPD_layer/*.F90
     #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/SHiELD_physics/FV3GFS/ $SHiELD_SRC/SHiELD_physics/FV3GFS/*.F90
-    python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/atmos_driver/solo/ $SHiELD_SRC/atmos_driver/solo/*.F90
+    python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/atmos_drivers/solo/ $SHiELD_SRC/atmos_drivers/solo/*.F90
     #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/FMSCoupler/SHiELD/ $SHiELD_SRC/FMSCoupler/SHiELD/*.F90
     #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/FMSCoupler/simple/ $SHiELD_SRC/FMSCoupler/simple/*.F90
     #python3 $PP_SER $PPSER_FLAGS --output-dir=$SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/driver/SHiELD/ $SHiELD_SRC/GFDL_atmos_cubed_sphere/driver/SHiELD/*.F90
@@ -348,7 +348,7 @@ echo -e "  building ${config} ${hydro} ${comp} ${bit} ${compiler} ${serial} \t `
     #cp $SERIALBOX_OUTDIR/SHiELD_physics/simple_coupler/* $SHiELD_SRC/SHiELD_physics/simple_coupler/
     #cp $SERIALBOX_OUTDIR/SHiELD_physics/IPD_layer/* $SHiELD_SRC/SHiELD_physics/IPD_layer/
     #cp $SERIALBOX_OUTDIR/SHiELD_physics/FV3GFS/* $SHiELD_SRC/SHiELD_physics/FV3GFS/
-    cp $SERIALBOX_OUTDIR/atmos_driver/solo/* $SHiELD_SRC/atmos_driver/solo/
+    cp $SERIALBOX_OUTDIR/atmos_drivers/solo/* $SHiELD_SRC/atmos_drivers/solo/
     #cp $SERIALBOX_OUTDIR/FMSCoupler/SHiELD/* $SHiELD_SRC/FMSCoupler/SHiELD/
     #cp $SERIALBOX_OUTDIR/FMSCoupler/simple/* $SHiELD_SRC/FMSCoupler/simple/
     #cp $SERIALBOX_OUTDIR/GFDL_atmos_cubed_sphere/driver/SHiELD/* $SHiELD_SRC/GFDL_atmos_cubed_sphere/driver/SHiELD/
