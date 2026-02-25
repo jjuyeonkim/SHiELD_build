@@ -7,9 +7,16 @@ rm -rf ../SERIALBOX_BUILD/*
 ./CHECKOUT_code
 
 cd Build
-rm build_shield_nh.debug.64bit.gnu.out
-#./COMPILE clean shield nh debug 64bit gnu serial
-./COMPILE cleanall solo nh debug 64bit gnu serial
+
+##### SHiELD DEBUG
+#rm build_shield_nh.debug.64bit.gnu.out
+#./COMPILE cleanall shield nh debug 64bit gnu serial
+
+##### SOLO DEBUG
+#./COMPILE cleanall solo nh debug 64bit gnu serial
+
+##### SOLO REPRO
+./COMPILE cleanall solo nh repro 64bit gnu serial
 
 cd ..
 set +x
