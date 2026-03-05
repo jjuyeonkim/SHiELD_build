@@ -4,11 +4,11 @@
 # Modify BUILDDIR to be where you have cloned the SHiELD_build repository
 
 export COMPILER="gnu"
-export COMP="repro"
+export COMP="debug"
 ACCOUNT="gfdl_f"
 export BUILDDIR="/ncrc/home1/${USER}/work/20260129_translate_tests/cleaner/SHiELD_build"
 RELEASE="`cat ${BUILDDIR}/../SHiELD_SRC/release`"
-export SCRATCHDIR="/gpfs/f5/${ACCOUNT}/scratch/${USER}/soloSerialBoxCollection_C5_${RELEASE}/"
+export SCRATCHDIR="/gpfs/f5/${ACCOUNT}/scratch/${USER}/soloSerialBoxCollection_C5_debug_${RELEASE}/"
 
 # Adding for serialbox
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/ncrc/home1/Janice.Kim/work/20260129_translate_tests/serialbox2/install/lib

@@ -19,9 +19,9 @@ echo $SCRATCHDIR
 mkdir -p ${BUILDDIR}/RTS/CI/stdout
 
 SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout/%x.o%j --mail-user=${USER}@noaa.gov --mail-type=fail"
-sbatch ${SBATCHARGS} --nodes=1 C96.solo.BCdry.1day
+#sbatch ${SBATCHARGS} --nodes=1 C96.solo.BCdry.1day
 #sbatch ${SBATCHARGS} --nodes=1 C96.solo.BCdry
 #sbatch ${SBATCHARGS} --nodes=1 C96.solo.BCmoist
 
 # NOTE: COMP is hard-coded to "debug" in C96.solo.BCdry.1day.debug.ddt
-#sbatch ${SBATCHARGS} --nodes=1 C96.solo.BCdry.1day.debug.ddt
+sbatch ${SBATCHARGS} --nodes=1 C96.solo.BCdry.1day.debug.ddt
