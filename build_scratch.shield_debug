@@ -8,15 +8,13 @@ rm -rf ../SERIALBOX_BUILD/*
 
 cd Build
 
-##### SHiELD DEBUG
+##### SHiELD DEBUG - noserial sanity check
+#rm build_shield_nh.debug.64bit.gnu.out
+#./COMPILE cleanall shield nh debug 64bit gnu noserial
+
+##### SHiELD DEBUG - actually useful one
 #rm build_shield_nh.debug.64bit.gnu.out
 ./COMPILE cleanall shield nh debug 64bit gnu serial
-
-##### SOLO DEBUG
-#./COMPILE cleanall solo nh debug 64bit gnu serial
-
-##### SOLO REPRO
-#./COMPILE cleanall solo nh repro 64bit gnu serial
 
 cd ..
 set +x
