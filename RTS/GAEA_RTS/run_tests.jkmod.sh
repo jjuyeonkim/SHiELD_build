@@ -13,16 +13,16 @@
 #   32bit gnu segfault
 #   64bit intel ok
 #   64bit gnu segfault
-export COMPILER="gnu"
+export COMPILER="intel"
 export MODE="64bit"
 export COMP="repro"
 ACCOUNT="gfdl_f"
 
 # Adding for serialbox
-#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/ncrc/home1/${USER}/work/20260129_translate_tests/serialbox2/install/lib
-#echo $LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/ncrc/home1/${USER}/work/20260129_translate_tests/serialbox2/install/lib
+echo $LD_LIBRARY_PATH
 
-#mkdir -p stdout
+mkdir -p stdout
 
 sbatch C48_res.jkmod.csh --mail-user=${USER}@noaa.gov --mail-type=fail --account=${ACCOUNT}
 
