@@ -14,6 +14,9 @@ cd Build
 #./COMPILE cleanall shield nh debug 64bit intel serial
 #./COMPILE cleanall shield nh debug 64bit intel noserial
 #./COMPILE cleanall shield nh repro 64bit intel noserial
+#./COMPILE cleanall shield nh debug 64bit gnu noserial
+
+# Currently working on this one --- 3/16/2026
 ./COMPILE cleanall shield nh repro 64bit intel serial
 
 ##### SOLO DEBUG

@@ -100,6 +100,7 @@ git clone -b ${drivers_release}   https://github.com/NOAA-GFDL/atmos_drivers
 if [ $config_name = 'SHiELD' ] || [ $config_name = 'SHiEMOM' ] || [ $config_name = 'SHiEMOM_LM4' ] ; then
    git clone -b ${phy_release} https://github.com/NOAA-GFDL/SHiELD_physics
    #git clone -b ${phy_oelbert_release}   https://github.com/oelbert/SHiELD_physics
+   #git clone -b ${fms_c_release} https://github.com/NOAA-GFDL/FMSCoupler
    git clone -b ${fms_c_jjk_release} git@github.com:jjuyeonkim/FMSCoupler.git
    git clone  https://github.com/NOAA-GFDL/ice_param
 fi
