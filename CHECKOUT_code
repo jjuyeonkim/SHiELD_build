@@ -81,6 +81,7 @@ echo ' '
 release="main"
 
 fv3_release=$release
+fv3_jjk_release="20260219_serialbox"
 
 phy_release=$release
 phy_oelbert_release="feature/serialization"
@@ -93,7 +94,9 @@ fms_c_jjk_release="20260305_serialbox"
 drivers_release=$release
 land_release="2025.04"
 
-git clone -b ${fv3_release} https://github.com/NOAA-GFDL/GFDL_atmos_cubed_sphere
+#git clone -b ${fv3_release} https://github.com/NOAA-GFDL/GFDL_atmos_cubed_sphere
+git clone -b ${fv3_jjk_release} git@github.com:jjuyeonkim/GFDL_atmos_cubed_sphere.git
+
 git clone -b ${fms_release}   https://github.com/NOAA-GFDL/FMS
 git clone -b ${drivers_release}   https://github.com/NOAA-GFDL/atmos_drivers
 
