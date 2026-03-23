@@ -2,7 +2,7 @@
 #SBATCH --output=./stdout/%x.%j
 #SBATCH --job-name=C48_res
 #SBATCH --clusters=c5
-#SBATCH --time=00:10:00
+#SBATCH --time=00:60:00
 #SBATCH --nodes=3
 
 # see run_tests.sh for an example of how to run these tests
@@ -73,7 +73,8 @@ set GRIDDIR = ${INPUT_DATA}/global.v201810/${CASE}/GRID/ #CHECK
     set npy = "49"
     set npz = "79"
     set layout_x = "2"
-    set layout_y = "8"
+    set layout_y = "2"
+    #set layout_y = "8"
     set io_layout = "1,1"
     set nthreads = "4"
 
