@@ -345,7 +345,7 @@ cat >! input.nml <<EOF
        npy      = $npy
        ntiles   = 6
        npz    = $npz
-       grid_type = -1
+       grid_type = 0
        make_nh = $make_nh
        fv_debug = .F.
        range_warn = .F.
@@ -394,8 +394,8 @@ cat >! input.nml <<EOF
        hord_mt = 5
        hord_vt = 5
        hord_tm = 5
-       hord_dp = -5
-       hord_tr = -5
+       hord_dp = 5
+       hord_tr = 5
        adjust_dry_mass = .F.
        consv_te = $consv_te
        consv_am = .F.
