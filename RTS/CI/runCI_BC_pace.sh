@@ -52,4 +52,8 @@ SBATCHARGS="--account=${ACCOUNT} --time=00:60:00 --clusters=c5 --output=./stdout
 #./C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug.${timestamp}.txt
 
 #./C48.solo.BCmoist.pace_test12_64_0day_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_0day_dycoreonly_debug.${timestamp}.txt
-./C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug | tee log.C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug.${timestamp}.txt
+#./C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug_fv_debug | tee log.C48.solo.BCmoist.pace_test12_64_1800sec_dycoreonly_debug_fv_debug.${timestamp}.txt
+
+
+./C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug_vtdm4_0.06 | tee log.C48.solo.BCmoist.pace_test12_64_1day_dycoreonly_debug_vtdm4_0.06.${timestamp}.txt
