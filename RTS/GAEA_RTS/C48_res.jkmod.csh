@@ -115,8 +115,8 @@ if (${TYPE} == "nh") then
   set phys_hydrostatic = ".F."     # can be tested
   set use_hydro_pressure = ".F."   # can be tested
   set consv_te = "1."
-  set k_split = "2"
-  set n_split = "6"
+  set k_split = "1"
+  set n_split = "2"
 else
   # hydrostatic options
   set make_nh = ".F."
@@ -124,8 +124,8 @@ else
   set phys_hydrostatic = ".F."     # will be ignored in hydro mode
   set use_hydro_pressure = ".T."   # have to be .T. in hydro mode
   set consv_te = "0."
-  set k_split = "2"
-  set n_split = "6"
+  set k_split = "1"
+  set n_split = "2"
 endif
 
 if (${MONO} == "mono" || ${MONO} == "monotonic") then                                              
