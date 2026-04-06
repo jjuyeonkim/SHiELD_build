@@ -24,7 +24,8 @@ echo $LD_LIBRARY_PATH
 
 mkdir -p stdout
 
-sbatch C48_res.jkmod.csh --mail-user=${USER}@noaa.gov --mail-type=fail --account=${ACCOUNT}
+#sbatch C48_res.jkmod.csh --mail-user=${USER}@noaa.gov --mail-type=fail --account=${ACCOUNT}
+sbatch C48_res.aquaplanet.csh --mail-user=${USER}@noaa.gov --mail-type=fail --account=${ACCOUNT}
 
 
 
