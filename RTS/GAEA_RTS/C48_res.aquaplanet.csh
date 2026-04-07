@@ -309,12 +309,19 @@ cat >! input.nml <<EOF
      date_out_of_range = 'climo',
 /
 
+ &external_ic_nml
+       filtered_terrain = .T.
+       levp = 64
+       gfs_dwinds = .T.
+       checker_tr = .F.
+       nt_checker = 0
+/
+
  &atmos_model_nml
      blocksize = $blocksize
      chksum_debug = .F.
      dycore_only = .F.
      fdiag = $fdiag
-     first_time_step = .false.
 /
 
  &fms_io_nml
@@ -381,7 +388,8 @@ cat >! input.nml <<EOF
        delt_max = 0.002
        ke_bg = 0.
        do_vort_damp = $do_vort_damp
-       external_ic = $external_ic
+       external_ic = .F.
+       is_ideal_case = .T.
        gfs_phil = $gfs_phil
        !nggps_ic = $external_ic
        nggps_ic = $nggps_ic
@@ -401,7 +409,7 @@ cat >! input.nml <<EOF
        fill = .T.
        dwind_2d = .F.
        print_freq = $print_freq
-       warm_start = $warm_start
+       warm_start = .F.
        no_dycore = $no_dycore
        z_tracer = .T.
 /
